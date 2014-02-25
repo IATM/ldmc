@@ -1,0 +1,14 @@
+.panel.panel-primary
+  .panel-heading
+    h3 = "Read Sequence #{@lession.id} for visit #{@visit.id} for patient #{@patient.full_name}"
+  .panel-body
+    dl.dl-horizontal
+      .row
+      .col-md-4
+        dt Numero de Lesion
+        dd = @lession.no_lesion
+     
+        
+  .panel-footer
+    h4 Aca van los botones de edicion, todavia no se como serian los paths
+

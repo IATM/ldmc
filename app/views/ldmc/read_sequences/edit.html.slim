@@ -1,0 +1,7 @@
+h1 Editing History of present illness
+
+.container
+	== render 'form'
+
+	= link_to 'Show', patient_visit_read_sequences_path(@patient, @visit, @visit.read_sequences)
+

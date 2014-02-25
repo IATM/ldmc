@@ -1,0 +1,16 @@
+= simple_form_for([@patient, @visit, @lession], html: {class: 'form-horizontal'}) do |f|
+  = f.error_notification
+
+  .row
+
+    =f.input :no_lesion
+    =f.input :vertebral_level
+    =f.input :clarity
+    =f.input :spine_localization
+    =f.input :intensity_lesion
+    =f.input :intensity_normalspine
+    =f.input :intensity_nape
+  hr
+  .row
+    .form-actions
+      = f.button :submit
