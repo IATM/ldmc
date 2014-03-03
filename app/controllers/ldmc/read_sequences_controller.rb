@@ -41,7 +41,8 @@ module Ldmc
       def read_sequence_params
         params.require(:read_sequence)
               .permit(
-                      {sequence_name: []}
+                      :sequence_name,
+                      :sequence_ann
                       )
       end
   end

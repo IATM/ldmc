@@ -1,16 +1,32 @@
-= simple_form_for([@patient, @visit, @lession], html: {class: 'form-horizontal'}) do |f|
+= simple_form_for([@visit, @lession], html: {class: 'form-horizontal'}) do |f|
   = f.error_notification
 
   .row
+  	.col-md-6
+		.well
 
-    =f.input :no_lesion
-    =f.input :vertebral_level
-    =f.input :clarity
-    =f.input :spine_localization
-    =f.input :intensity_lesion
-    =f.input :intensity_normalspine
-    =f.input :intensity_nape
+    		=f.input :no_lesion, as: :decimal, label: 'Número de la lesión'
+			=f.input :size_ax, as: :decimal, label:'Tamaño en mm eje craneocaudal mayor'
+    		=f.input :vertebral_level, as: :check_boxes, collection: Ldmc::Lession::LEVEL_OPTS, item_wrapper_class: 'checkbox-inline', label: 'Nivel vertebral (epicentro de la lesión)' 
+    		=f.input :clarity, as: :radio_buttons, collection: Ldmc::Lession::CLARITY_OPTS, item_wrapper_class: 'checkbox-inline', label:'Nitidez (claridad en la visualización de la lesión)'
+			=f.input :spine_localization, as: :check_boxes, collection: Ldmc::Lession::LOCAL_OPTS, item_wrapper_class: 'checkbox-inline', label:'Localización en la médula'
+	
+	.col-md-6
+		.well
+			h4  Intensidad de la señal 
+			blockquote 
+				small Medir ROI siempre con area 2 mm2, Seleccionar el valor promedio
+				
+			=f.input :intensity_lesion, as: :decimal, label: 'La lesión'
+    		=f.input :intensity_normalspine, as: :decimal, label: 'Médula normal'
+    		=f.input :intensity_nape, as: :decimal, label: 'Aire posterior a la nuca'
+			
+		
   hr
   .row
     .form-actions
       = f.button :submit
+	  = link_to 'Limpiar', new_visit_lession_path(@visit), class: "btn btn-primary"
+
+
+      
