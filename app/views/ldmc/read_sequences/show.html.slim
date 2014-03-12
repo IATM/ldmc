@@ -1,18 +1,15 @@
 .panel.panel-default
-          .panel-heading
-            h3 Lectura para #{@read_sequence.sequence_ann}
-          .panel-body
-		  	
-            table.table.table-striped
-              tr
-                th Lesiones:
-			  
+  .panel-heading
+    h3 Lectura para #{@read_sequence.sequence_ann}
+  .panel-body
 
+    table.table.table-striped
+      tr
+        th Lesiones:
 
-              - @read_sequence.lessions.each do |les|
-                tr
-                  td = link_to les.no_lesion, visit_read_sequence_lession_path(@visit,@read_sequence,les)
-				  
+      - @read_sequence.lesions.each do |les|
+        tr
+          td = link_to les.no_lesion, subject_read_sequence_lesion_path(@subject,@read_sequence,les)
 
-          .panel-footer
-            = link_to 'Nueva Lesión', new_visit_read_sequence_lession_path(@visit,@read_sequence), class: "btn btn-primary"
+  .panel-footer
+    = link_to 'Nueva Lesión', new_subject_read_sequence_lesion_path(@subject,@read_sequence), class: "btn btn-primary"

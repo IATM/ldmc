@@ -6,13 +6,10 @@
       tr
         th Accession
 
-
       - @read_sequences.each do |read|
         tr
-			td
-		  		strong = link_to "algo", main_app.patient_ldmc_visit_read_sequence_lession_path(read.visit.patient,read.visit, read)
-		  	td= read.type 
-		  	td= read.visit.patient
-		  
+    			td
+  		  	td= read.type
+
   .panel-footer
     p Pagination goes here

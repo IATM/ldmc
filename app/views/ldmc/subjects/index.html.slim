@@ -1,0 +1,25 @@
+.panel.panel-primary
+  .panel-heading
+    h1 Listing subjects
+  .panel-body
+    table.table.table-striped
+      tr
+        th Sex
+        th Identification
+        th Birthdate
+        th
+
+      - @subjects.each do |subject|
+        tr
+          td
+            strong = link_to subject.identification, subject_path(subject)
+          td = subject.sex
+          td = subject.identification
+          td = subject.birthdate
+          td
+            = link_to 'Show', subject, class: "btn btn-xs btn-primary"
+            = link_to 'Edit', edit_subject_path(subject), class: "btn btn-warning btn-xs"
+            = link_to 'Destroy', subject, data: {:confirm => 'Are you sure?'}, :method => :delete, class: "btn btn-danger btn-xs"
+
+  .panel-footer
+    = link_to 'New Subject', new_subject_path, class: "btn btn-primary"

@@ -3,21 +3,13 @@ module Ldmc
     include Mongoid::Document
     include Mongoid::Timestamps
 
-    
-    field :type, type: String, default: 'Read Sequence'
+    field :type, type: String, default: 'read sequence'
     field :sequence_name, type: String; SEQ_OPT = ['3D DIR','3D FLAIR','2D T1 FLAIR','2D DP', '2D STIR']
     field :sequence_ann, type: String
 
-    embedded_in :visit
+    embedded_in :subject
+    embeds_many :lesions
 
-   
-    
-    
-    embeds_many :lessions, class_name: 'Ldmc::Lession'
-  
-
-    # Trim empty array values so they don't save to DB? UGGGLY pero funciona, until they fix this in Rails
-    
   end
 
 end

@@ -1,0 +1,18 @@
+.panel.panel-primary
+  .panel-heading
+    h1 = "Subject: #{@subject.identification}"
+
+  .panel-body
+    .row
+      .col-md-4
+        dl.dl-horizontal
+          dt Sex:
+          dd = @subject.sex
+          dt Identification:
+          dd = @subject.identification
+          dt Birthdate:
+          dd = @subject.birthdate
+
+  .panel-footer
+    = link_to 'Edit Subject', edit_subject_path(@subject), class: "btn btn-primary"
+    = link_to 'Back', subjects_path, class: "btn - btn-default"

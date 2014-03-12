@@ -1,0 +1,36 @@
+.panel.panel-primary
+  .panel-heading
+    h3 = "Read Sequence #{@lesion.id} for subject #{@subject.id}"
+  .panel-body
+    dl.dl-horizontal
+      .row
+      .col-md-6
+        dt Numero de Lesion
+        dd = @lesion.no_lesion
+    		dt Tamaño en mm eje craneocaudal mayor
+    		dd = @lesion.size_ax
+    		dt Nivel vertebral (epicentro de la lesión)
+    		dd = @lesion.vertebral_level
+    		dt Nitidez (claridad en la visualización de la lesión)
+    		dd = @lesion.clarity
+    		dt Localización en la médula
+    		dd = @lesion.spine_localization
+    		dt La lesión
+    		dd = @lesion.intensity_lesion
+    		dt Médula normal
+    		dd = @lesion.intensity_normalspine
+    		dt Aire posterior a la nuca
+    		dd = @lesion.intensity_nape
+
+
+  .panel-footer
+    .row
+      .form-actions
+   		=link_to 'Atras', subject_read_sequence_path(@subject,@read_sequence), class: "btn btn-primary"
+		=link_to 'Editar Lesión', edit_subject_read_sequence_lesion_path(@subject,@read_sequence,@lesion), class: "btn btn-primary"
+		=link_to("Borrar lesion", subject_read_sequence_lesion_path(@subject,@read_sequence,@lesion), data: {:confirm =>"Está seguro?"} , :method => :delete, :class => "btn btn-primary")
+
+
+
+
+
