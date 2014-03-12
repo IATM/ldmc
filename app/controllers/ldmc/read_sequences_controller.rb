@@ -1,4 +1,4 @@
-module Ldmc
+module Ldmc 
 class ReadSequencesController < ApplicationController
   before_action :load_patient, only: [:show, :edit, :update, :new, :create]
   before_action :load_visit, only: [:show, :edit, :update, :new, :create]

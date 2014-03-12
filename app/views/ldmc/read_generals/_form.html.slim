@@ -1,0 +1,8 @@
+= simple_form_for([@visit, @read_general], html: {class: 'form-horizontal'}) do |f|
+  = f.error_notification
+  .row
+  	= f.input :lession_dir, as: :radio_buttons, collection: Ldmc::ReadGeneral::LESION_OPT, item_wrapper_class: 'checkbox-inline', label:'lesiones cerebrales en DIR'
+	= f.input :level_dir
+  .row
+    = f.button :level_dir, label: 'Secuencia 3D DIR cerebral nivel cervical más caudal visible'
+	= f.button :level_dir, label: 'Secuencia 3D Flair cerebral nivel cervical más caudal visible'

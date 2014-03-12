@@ -1,0 +1,18 @@
+.panel.panel-primary
+  .panel-heading
+    h1 Lecturas
+  .panel-body
+    table.table.table-striped
+      tr
+        th Accession
+
+
+      - @read_sequences.each do |read|
+        tr
+			td
+		  		strong = link_to "algo", ldmc.new_visit_read_sequence_lession_path(read.visit.patient,read.visit, read)
+		  	td= read.type 
+		  	td= read.visit.patient
+		  
+  .panel-footer
+    p Pagination goes here

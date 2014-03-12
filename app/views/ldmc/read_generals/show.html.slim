@@ -1,0 +1,15 @@
+.panel.panel-default
+          .panel-heading
+            h3 Visits
+          .panel-body
+            table.table.table-striped
+              tr
+                th Start
+
+
+              - @read_sequence.lessions.each do |les|
+                tr
+                  td = link_to les.no_lesion, visit_read_sequence_lession_path(@visit,@read_sequence,les)
+
+          .panel-footer
+            = link_to 'Nueva Lesión', new_visit_read_sequence_lession_path(@visit,@read_sequence), class: "btn btn-primary"
