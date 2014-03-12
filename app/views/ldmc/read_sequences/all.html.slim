@@ -10,7 +10,7 @@
       - @read_sequences.each do |read|
         tr
 			td
-		  		strong = link_to "algo", ldmc.new_visit_read_sequence_lession_path(read.visit.patient,read.visit, read)
+		  		strong = link_to "algo", main_app.patient_ldmc_visit_read_sequence_lession_path(read.visit.patient,read.visit, read)
 		  	td= read.type 
 		  	td= read.visit.patient
 		  
