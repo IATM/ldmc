@@ -1,8 +1,8 @@
 module Ldmc 
 class ReadSequencesController < ApplicationController
-  before_action :load_patient, only: [:show, :edit, :update, :new, :create]
-  before_action :load_visit, only: [:show, :edit, :update, :new, :create]
-  before_action :set_read_sequence, only: [:show, :edit, :update]
+  before_action :load_patient, only: [:show, :edit, :update, :new, :create, :destroy]
+  before_action :load_visit, only: [:show, :edit, :update, :new, :create, :destroy]
+  before_action :set_read_sequence, only: [:show, :edit, :update, :destroy]
   before_action :set_breadcrumbs, only: [:show, :edit, :new]
  
   def all
