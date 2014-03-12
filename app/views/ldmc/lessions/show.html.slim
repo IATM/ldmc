@@ -4,11 +4,33 @@
   .panel-body
     dl.dl-horizontal
       .row
-      .col-md-4
+      .col-md-6
         dt Numero de Lesion
         dd = @lession.no_lesion
-     
-        
-  .panel-footer
-    h4 Aca van los botones de edicion, todavia no se como serian los paths
+		dt Tamaño en mm eje craneocaudal mayor
+		dd = @lession.size_ax
+		dt Nivel vertebral (epicentro de la lesión)
+		dd = @lession.vertebral_level 
+		dt Nitidez (claridad en la visualización de la lesión)
+		dd = @lession.clarity
+		dt Localización en la médula
+		dd = @lession.spine_localization
+		dt La lesión
+		dd = @lession.intensity_lesion
+		dt Médula normal
+		dd = @lession.intensity_normalspine
+		dt Aire posterior a la nuca
+		dd = @lession.intensity_nape
 
+
+  .panel-footer
+    .row
+      .form-actions
+   		=link_to 'Atras', visit_read_sequence_path(@visit,@read_sequence), class: "btn btn-primary"
+		=link_to 'Editar Lesión', edit_visit_read_sequence_lession_path(@visit,@read_sequence,@lession), class: "btn btn-primary"
+		=link_to("Borrar lesion", visit_read_sequence_lession_path(@visit,@read_sequence,@lession), data: {:confirm =>"Está seguro?"} , :method => :delete, :class => "btn btn-primary")
+		
+	
+		
+		
+		

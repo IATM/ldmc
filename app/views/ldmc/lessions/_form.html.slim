@@ -1,4 +1,4 @@
-= simple_form_for([@visit, @lession], html: {class: 'form-horizontal'}) do |f|
+= simple_form_for([@visit,@read_sequence, @lession], html: {class: 'form-horizontal'}) do |f|
   = f.error_notification
 
   .row
@@ -26,7 +26,7 @@
   .row
     .form-actions
       = f.button :submit
-	  = link_to 'Limpiar', new_visit_lession_path(@visit), class: "btn btn-primary"
+	  = link_to 'Limpiar', new_visit_read_sequence_lession_path(@visit,@read_sequence), class: "btn btn-primary"
 
 
       

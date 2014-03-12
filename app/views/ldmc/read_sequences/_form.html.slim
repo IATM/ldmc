@@ -1,0 +1,7 @@
+= simple_form_for([@visit, @read_sequence], html: {class: 'form-horizontal'}) do |f|
+  = f.error_notification
+  .row
+  	= f.input :sequence_name, as: :radio_buttons, collection: Ldmc::ReadSequence::SEQ_OPT, item_wrapper_class: 'checkbox-inline', label:'Secuencia'
+	= f.input :sequence_ann
+  .row
+    = f.button :submit

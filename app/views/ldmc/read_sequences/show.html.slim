@@ -1,15 +1,15 @@
-.panel.panel-primary
-  .panel-heading
-    h3 = "Read Sequence #{@read_sequence.id} for visit #{@visit.id} for patient #{@patient.full_name}"
-  .panel-body
-    dl.dl-horizontal
-      .row
-      .col-md-4
-        dt Nombre de la secuencia
-        dd = @read_sequence.sequence_name
-     
-        
-  .panel-footer
-  = link_to 'New Work Order', new_patient_visit_work_order_path(@patient,@visit), class: "btn btn-primary"
-    h4 Aca van los botones de edicion, todavia no se como serian los paths
+.panel.panel-default
+          .panel-heading
+            h3 Visits
+          .panel-body
+            table.table.table-striped
+              tr
+                th Start
 
+
+              - @read_sequence.lessions.each do |les|
+                tr
+                  td = link_to les.no_lesion, visit_read_sequence_lession_path(@visit,@read_sequence,les)
+
+          .panel-footer
+            = link_to 'Nueva Lesión', new_visit_read_sequence_lession_path(@visit,@read_sequence), class: "btn btn-primary"

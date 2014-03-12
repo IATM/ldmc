@@ -4,10 +4,11 @@ module Ldmc
     include Mongoid::Timestamps
 
     field :type, type: String, default: 'Read General'
-    field :lesion_dir, type: Array; LESION_OPT = ['periventriculares','sustancia blanca subcortical','sustancia gris','pedunculos cerebrales']
+    field :lession_dir, type: Array; LESION_OPT = ['periventriculares','sustancia blanca subcortical','sustancia gris','pedunculos cerebrales']
     field :level_dir
     field :level_flair
     
+    embedded_in :visit
     
     #embeds_many :lessions, class_name: 'Ldmc::Lession'
   
@@ -17,3 +18,6 @@ module Ldmc
   end
 
 end
+
+
+

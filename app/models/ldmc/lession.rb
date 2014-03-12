@@ -13,8 +13,8 @@ class Lession
   field :intensity_normalspine, type: Float
   field :intensity_nape, type: Float
 
-  #embedded_in :read_sequence
-  embedded_in :visit
+  embedded_in :read_sequence
+  #embedded_in :visit
 
 end
 end
