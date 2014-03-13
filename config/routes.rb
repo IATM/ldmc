@@ -2,7 +2,7 @@ Ldmc::Engine.routes.draw do
   resources :subjects do
     resources :read_general
     resources :read_sequences do
-      resources :lessions
+      resources :lesions
     end
   end
 end

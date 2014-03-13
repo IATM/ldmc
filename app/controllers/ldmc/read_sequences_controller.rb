@@ -4,7 +4,6 @@ module Ldmc
     before_action :set_read_sequence, only: [:show, :edit, :update, :destroy]
 
     def all
-      #add_breadcrumb "All Read Sequence", read_sequences_path
       @read_sequences = Subject.all.map {|p| p.subjects.map {|v| v.read_sequences}}.flatten
       @subjects = Subject.all.map {|p| p.subjects.map}.flatten
       @flair_read_sequences = Subject.where("subjects.read_sequences.sequence_name" => "3D FLAIR").map {|p| p.subjects.map {|v| v.read_sequences.where(sequence_name: "3D FLAIR")}}.flatten

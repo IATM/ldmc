@@ -8,7 +8,7 @@ module Ldmc
     field :sequence_ann, type: String
 
     embedded_in :subject
-    embeds_many :lesions
+    embeds_many :lesions, class_name: 'Ldmc::Lesion'
 
   end
 
