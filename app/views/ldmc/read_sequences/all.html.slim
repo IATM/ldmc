@@ -1,0 +1,15 @@
+.panel.panel-primary
+  .panel-heading
+    h1 Lecturas por secuencia
+  .panel-body
+    table.table.table-striped
+      tr
+        th Accession
+
+      - @read_sequences.each do |read|
+        tr
+    			td
+  		  	td= read.type
+
+  .panel-footer
+    p Pagination goes here

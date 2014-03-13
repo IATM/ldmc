@@ -1,3 +1,4 @@
+
 module Ldmc
   module ApplicationHelper
   end

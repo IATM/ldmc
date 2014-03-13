@@ -1,0 +1,7 @@
+= simple_form_for([@subject, @read_general], html: {class: 'form-horizontal'}) do |f|
+  = f.error_notification
+  .row
+  	= f.input :lesion_dir, as: :check_boxes, collection: Ldmc::ReadGeneral::LESION_OPT, item_wrapper_class: 'checkbox-inline', label:'lesiones cerebrales en DIR'
+  	= f.input :level_dir
+    = f.submit
+  .row

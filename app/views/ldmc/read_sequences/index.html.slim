@@ -1,0 +1,16 @@
+.panel.panel-primary
+  .panel-heading
+    h1 Lista de lecturas por secuencia
+  .panel-body
+    table.table.table-striped
+      tr
+        th Sequence name
+        th Sequence ann
+    - @read_sequences.each do |rs|
+      tr
+        td = link_to rs.sequence_name, subject_read_sequence_path(@subject,rs)
+        td = rs.sequence_ann
+  .panel-footer
+    .row
+      .form-actions
+

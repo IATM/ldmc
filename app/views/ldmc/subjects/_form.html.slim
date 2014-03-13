@@ -1,0 +1,9 @@
+= simple_form_for(@subject, html: {class: 'form-horizontal'}) do |f|
+  = f.error_notification
+  .row
+    .col-md-12
+      = f.input :sex
+      = f.input :identification
+      = f.input :birthdate
+  .row
+    = f.button :submit
