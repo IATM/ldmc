@@ -14,7 +14,7 @@ module Ldmc
     end
 
     def new
-      @read_general = @subject.read_generals.build
+      @read_general = @subject.build_read_general
     end
 
     def create
