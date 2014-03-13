@@ -2,8 +2,20 @@
   = f.error_notification
   .row
     .col-md-12
+      h2 Informacion del paciente
       = f.input :sex
       = f.input :identification
       = f.input :birthdate
+  .row
+    .col-md-12
+      = f.simple_fields_for :read_general do |rg|
+        = render 'read_general_fields', :f => rg
+      h2 Read sequences
+      #tasks
+        = f.simple_fields_for :read_sequences do |rs|
+          = render 'read_sequence_fields', :f => rs
+        .links
+          = link_to_add_association 'add read sequence', f, :read_sequences, class: 'btn btn-primary'
+  hr
   .row
     = f.button :submit

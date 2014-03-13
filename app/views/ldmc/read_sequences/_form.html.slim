@@ -1,7 +1,12 @@
 = simple_form_for([@subject, @read_sequence], html: {class: 'form-horizontal'}) do |f|
   = f.error_notification
   .row
-  	= f.input :sequence_name, as: :radio_buttons, collection: Ldmc::ReadSequence::SEQ_OPT, item_wrapper_class: 'checkbox-inline', label:'Secuencia'
-	= f.input :sequence_ann
+    h2 Lesiones
+    #lesions
+      = f.simple_fields_for :lesions do |l|
+        = render 'lesion_fields', :f => l
+      .links
+        = link_to_add_association 'add lesion', f, :lesions, class: 'btn btn-info'
+  hr
   .row
     = f.button :submit

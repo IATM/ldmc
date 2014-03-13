@@ -60,7 +60,17 @@ module Ldmc
     end
 
     def read_sequence_params
-      params.require(:read_sequence).permit(:sequence_name, :sequence_ann)
+      params.require(:read_sequence).permit(:sequence_name, :sequence_ann,
+                                            :lesions_attributes => [:id,
+                                                                    :type,
+                                                                    :size_ax,
+                                                                    {vertebral_level: []},
+                                                                    :clarity,
+                                                                    {spine_localization: []},
+                                                                    :intensity_lesion,
+                                                                    :intensity_normalspine,
+                                                                    :intensity_nape,
+                                                                    :_destroy])
     end
   end
 end

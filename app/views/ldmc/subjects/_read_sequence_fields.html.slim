@@ -1,0 +1,6 @@
+.nested-fields
+  .well
+    h3 Read sequence
+    = f.input :sequence_name
+    = f.input :sequence_ann
+    = link_to_remove_association "remove read sequence", f, class: 'btn btn-default'

@@ -1,0 +1,24 @@
+.nested-fields
+  .panel.panel-primary
+    .panel-heading
+      h4 Lesion
+      = link_to_remove_association "remove lesion", f, class: 'btn btn-warning btn-xs'
+    .panel-body
+      .row
+        .col-md-6
+          .well
+            =f.input :size_ax, as: :decimal, label:'Tamaño en mm eje craneocaudal mayor'
+            =f.input :vertebral_level, as: :check_boxes, collection: Ldmc::Lesion::LEVEL_OPTS, item_wrapper_class: 'checkbox-inline', label: 'Nivel vertebral (epicentro de la lesión)'
+            =f.input :clarity, as: :radio_buttons, collection: Ldmc::Lesion::CLARITY_OPTS, item_wrapper_class: 'checkbox-inline', label:'Nitidez (claridad en la visualización de la lesión)'
+            =f.input :spine_localization, as: :check_boxes, collection: Ldmc::Lesion::LOCAL_OPTS, item_wrapper_class: 'checkbox-inline', label:'Localización en la médula'
+
+        .col-md-6
+          .well
+            h4  Intensidad de la señal
+            blockquote
+              small Medir ROI siempre con area 2 mm2, Seleccionar el valor promedio
+            =f.input :intensity_lesion, as: :decimal, label: 'La lesión'
+            =f.input :intensity_normalspine, as: :decimal, label: 'Médula normal'
+            =f.input :intensity_nape, as: :decimal, label: 'Aire posterior a la nuca'
+      .row
+        col-md-12

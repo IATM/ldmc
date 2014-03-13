@@ -11,6 +11,14 @@ module Ldmc
 
     def new
       @subject = Subject.new
+
+      @subject.read_sequences.build(sequence_name: '3D FLAIR')
+      @subject.read_sequences.build(sequence_name: '3D DIR')
+      @subject.read_sequences.build(sequence_name: '2D T1 FLAIR')
+      @subject.read_sequences.build(sequence_name: '2D DP')
+      @subject.read_sequences.build(sequence_name: '2D STIR')
+
+      @subject.build_read_general
     end
 
     def edit
@@ -58,7 +66,9 @@ module Ldmc
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def subject_params
-      params.require(:subject).permit(:identification, :sex, :birthdate)
+      params.require(:subject).permit(:identification, :sex, :birthdate,
+                                      :read_sequences_attributes => [:id, :sequence_name, :sequence_ann, :_destroy],
+                                      :read_general_attributes => [:read_ann])
     end
   end
 end

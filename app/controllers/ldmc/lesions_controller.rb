@@ -66,7 +66,6 @@ module Ldmc
     def lesion_params
       params.require(:lesion)
             .permit(:type,
-                    :no_lesion,
                     :size_ax,
                     {vertebral_level: []},
                     :clarity,

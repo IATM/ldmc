@@ -12,4 +12,5 @@
           td = link_to les.no_lesion, subject_read_sequence_lesion_path(@subject,@read_sequence,les)
 
   .panel-footer
+    = link_to 'Editar read sequence', edit_subject_read_sequence_path(@subject,@read_sequence), class: "btn btn-primary"
     = link_to 'Nueva Lesión', new_subject_read_sequence_lesion_path(@subject,@read_sequence), class: "btn btn-primary"

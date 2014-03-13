@@ -5,7 +5,6 @@ module Ldmc
 
     field :type, type: String, default: 'lesion'
 
-    field :no_lesion, type: Integer
     field :size_ax, type: Integer
     field :vertebral_level, type: Array; LEVEL_OPTS = ['C1','C2','C3','C4','C5','C6','C7','D1']
     field :clarity, type: String; CLARITY_OPTS = ['buena','regular','mala']
