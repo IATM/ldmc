@@ -8,8 +8,7 @@
 
       - @read_sequences.each do |read|
         tr
-    			td
-  		  	td= read.type
+  		  	td = link_to read.id, edit_subject_read_sequence_path(read.subject,read)
 
   .panel-footer
     p Pagination goes here
