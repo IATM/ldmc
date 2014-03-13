@@ -1,11 +1,9 @@
+require_dependency "ldmc/application_controller"
+
 module Ldmc
   class ReadGeneralsController < ApplicationController
-    before_action :load_subject, only: [:show, :edit, :update, :new, :create]
+    before_action :load_subject
     before_action :set_read_general, only: [:show, :edit, :update]
-
-    def all
-      @read_generals = Subject.all.map {|p| p.subjects.map {|v| v.read_generals}}.flatten
-    end
 
     def show
     end
@@ -18,7 +16,7 @@ module Ldmc
     end
 
     def create
-      @read_general = @subject.read_generals.build(read_general_params)
+      @read_general = @subject.build_read_general(read_general_params)
 
       respond_to do |format|
         if @read_general.save
@@ -34,7 +32,7 @@ module Ldmc
     def update
       respond_to do |format|
         if @read_general.update_attributes(read_general_params)
-          format.html { redirect_to [@subject, @read_general], notice: 'Lession was successfully updated.' }
+          format.html { redirect_to [@subject, @read_general], notice: 'Read general was successfully updated.' }
           format.json { head :no_content }
         else
           format.html { render action: 'edit' }
@@ -44,19 +42,21 @@ module Ldmc
     end
 
     private
+    def set_read_general
+      @read_general = @subject.read_general
+    end
+
+    def read_general_params
+      params.require(:read_general)
+            .permit(
+                    {lesion_dir: []},
+                    :level_dir,
+                    :level_flair
+                    )
+    end
 
     def load_subject
       @subject = Subject.find(params[:subject_id])
     end
-
-    def set_read_general
-      @read_general = @subject.read_generals.find(params[:id])
-    end
-
-    def read_general_params
-      params.require(:read_general).permit( {lesion_dir: []}, :level_dir, :level_flair )
-    end
   end
 end
-
-

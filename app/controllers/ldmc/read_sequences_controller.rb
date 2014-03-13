@@ -1,12 +1,16 @@
 module Ldmc
   class ReadSequencesController < ApplicationController
-    before_action :load_subject, only: [:show, :edit, :update, :new, :create, :destroy]
+    before_action :load_subject, only: [:index, :show, :edit, :update, :new, :create, :destroy]
     before_action :set_read_sequence, only: [:show, :edit, :update, :destroy]
 
     def all
       @read_sequences = Subject.all.map {|p| p.subjects.map {|v| v.read_sequences}}.flatten
       @subjects = Subject.all.map {|p| p.subjects.map}.flatten
       @flair_read_sequences = Subject.where("subjects.read_sequences.sequence_name" => "3D FLAIR").map {|p| p.subjects.map {|v| v.read_sequences.where(sequence_name: "3D FLAIR")}}.flatten
+    end
+
+    def index
+      @read_sequences = @subject .read_sequences.all
     end
 
     def show
