@@ -1,8 +1,9 @@
 .nested-fields
-  .panel.panel-primary
+  .panel.panel-default
     .panel-heading
-      h4 Lesion
-      = link_to_remove_association "remove lesion", f, class: 'btn btn-warning btn-xs'
+      .row 
+	  	h4 Lesion
+	  	span.pull-right = link_to_remove_association "Eliminar Lesion", f, class: 'btn btn-danger btn-xs'
     .panel-body
       .row
         .col-md-6

@@ -1,10 +1,25 @@
 .panel.panel-default
   .panel-heading
-    h3 Lectura general
+    h3 Lectura general para #{@read_general.read_ann}
   .panel-body
-    dl
-      dt Lesion DIR
-      dd = @read_general.lesion_dir
-      dt Level DIR
-      dd = @read_general.level_dir
-  .panel-footer
+    table.table.table-striped
+      tr
+		th Edad
+		th Sexo
+		th lesiones en DIR
+		th Nivel en DIR
+		th Nivel en Flair
+		tr
+			td= @subject.birthdate
+			td= @subject.sex
+			td= @read_general.lesion_dir.join(", ")
+		  	td= @read_general.level_dir
+		  	td= @read_general.level_flair
+
+	.panel-footer
+    = link_to 'Editar read sequence', edit_subject_read_general_path(@subject,@read_general), class: "btn btn-primary"
+	= link_to "Atrás", read_generals_path,  class: "btn btn-info"
+	
+	
+	
+   

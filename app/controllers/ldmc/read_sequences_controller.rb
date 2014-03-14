@@ -6,6 +6,7 @@ module Ldmc
 
     def all
       @read_sequences = Subject.all.map {|s| s.read_sequences}.flatten
+      
     end
 
     def index
@@ -13,6 +14,7 @@ module Ldmc
     end
 
     def show
+      @sorted_lesions= @read_sequence.lesions.sort {|a,b| b.size_ax <=> a.size_ax}
     end
 
     def edit
@@ -39,7 +41,7 @@ module Ldmc
     def update
       respond_to do |format|
         if @read_sequence.update_attributes(read_sequence_params)
-          format.html { redirect_to [@subject, @read_sequence], notice: 'Lession was successfully updated.' }
+          format.html { redirect_to read_sequences_path}
           format.json { head :no_content }
         else
           format.html { render action: 'edit' }

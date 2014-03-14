@@ -2,10 +2,16 @@ require_dependency "ldmc/application_controller"
 
 module Ldmc
   class ReadGeneralsController < ApplicationController
-    before_action :load_subject
+    before_action :load_subject, only: [:index, :show, :edit, :update, :new, :create, :destroy]
     before_action :set_read_general, only: [:show, :edit, :update]
     load_and_authorize_resource
 
+    def all
+      @read_generals = Subject.all.map {|s| s.read_general}.flatten
+      
+    end
+    
+    
     def show
     end
 
@@ -33,7 +39,7 @@ module Ldmc
     def update
       respond_to do |format|
         if @read_general.update_attributes(read_general_params)
-          format.html { redirect_to [@subject, @read_general], notice: 'Read general was successfully updated.' }
+          format.html { redirect_to read_generals_path}
           format.json { head :no_content }
         else
           format.html { render action: 'edit' }
@@ -46,18 +52,19 @@ module Ldmc
     def set_read_general
       @read_general = @subject.read_general
     end
+    
+    def load_subject
+      @subject = Subject.find(params[:subject_id])
+    end
 
     def read_general_params
       params.require(:read_general)
             .permit(
                     {lesion_dir: []},
                     :level_dir,
-                    :level_flair
+                    :level_flair,
+                    :read_ann
                     )
-    end
-
-    def load_subject
-      @subject = Subject.find(params[:subject_id])
     end
   end
 end

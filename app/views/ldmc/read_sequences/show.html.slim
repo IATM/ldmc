@@ -6,11 +6,26 @@
     table.table.table-striped
       tr
         th Lesiones:
+		th Tamaño eje CC mayor
+		th Nivel vertebral
+		th Nitidez
+		th Localizaión med.
+		th Inten. lesion
+		th Inten. medula
+		th Inten. Aire p.nuca
 
-      - @read_sequence.lesions.each do |les|
+      -@sorted_lesions.each_with_index do |les,index|
         tr
-          td = link_to les.no_lesion, subject_read_sequence_lesion_path(@subject,@read_sequence,les)
-
-  .panel-footer
+          td = index+1
+		  td= les.size_ax
+		  td= les.vertebral_level.join(", ")
+		  td= les.clarity
+		  td= les.spine_localization.join(", ")
+		  td= les.intensity_lesion
+		  td= les.intensity_normalspine
+		  td= les.intensity_nape
+		  
+		  
+	.panel-footer
     = link_to 'Editar read sequence', edit_subject_read_sequence_path(@subject,@read_sequence), class: "btn btn-primary"
-    = link_to 'Nueva Lesión', new_subject_read_sequence_lesion_path(@subject,@read_sequence), class: "btn btn-primary"
+	= link_to "Atrás", read_sequences_path,  class: "btn btn-info"

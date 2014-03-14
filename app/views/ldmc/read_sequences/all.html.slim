@@ -4,11 +4,15 @@
   .panel-body
     table.table.table-striped
       tr
-        th Accession
+        th Nombre
+		th
 
       - @read_sequences.each do |read|
         tr
-  		  	td = link_to read.id, edit_subject_read_sequence_path(read.subject,read)
+  		  	td = link_to read.sequence_ann, edit_subject_read_sequence_path(read.subject,read), class: 'btn btn-primary'
+			td
+				= link_to 'Mostrar', subject_read_sequence_path(read.subject,read), class: 'btn btn-info btn-xs'
+				= link_to 'Editar', edit_subject_read_sequence_path(read.subject,read), class: "btn btn-warning btn-xs"
 
   .panel-footer
-    p Pagination goes here
+    

@@ -14,6 +14,15 @@ module Ldmc
     field :intensity_nape, type: Float
 
     embedded_in :read_sequence
+    
+    before_validation do |model|
+      model.vertebral_level.reject!(&:blank?) if model.vertebral_level
+      model.spine_localization.reject!(&:blank?) if model.spine_localization
+    end
+    
+    
+    
+    
 
   end
 end

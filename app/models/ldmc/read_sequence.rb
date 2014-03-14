@@ -12,6 +12,7 @@ module Ldmc
     embeds_many :lesions, class_name: 'Ldmc::Lesion'
 
     accepts_nested_attributes_for :lesions, :reject_if => :all_blank, :allow_destroy => true
+   
 
   end
 
