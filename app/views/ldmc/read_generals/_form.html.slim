@@ -2,6 +2,11 @@
   = f.error_notification
   .row
   	= f.input :lesion_dir, as: :check_boxes, collection: Ldmc::ReadGeneral::LESION_OPT, item_wrapper_class: 'checkbox-inline', label:'lesiones cerebrales en DIR'
-  	= f.input :level_dir
-    = f.submit
+  	= f.input :level_dir, label: 'Secuencia 3D DIR cerebral nivel cervical más caudal visible'
+	= f.input :level_flair, label: 'Secuencia 3D Flair cerebral nivel cervical más caudal visible'
+    
   .row
+  .row
+    = f.submit 'Guardar cambios', class: "btn btn-primary"
+	=link_to "Atrás", read_generals_path,  class: "btn btn-info"
+  

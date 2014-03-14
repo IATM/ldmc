@@ -1,12 +1,13 @@
 = simple_form_for([@subject, @read_sequence], html: {class: 'form-horizontal'}) do |f|
   = f.error_notification
   .row
-    h2 Lesiones
+    h3 Caracterización de las tres lesiones más grandes
     #lesions
       = f.simple_fields_for :lesions do |l|
         = render 'lesion_fields', :f => l
       .links
-        = link_to_add_association 'add lesion', f, :lesions, class: 'btn btn-info'
+        = link_to_add_association 'Agregar Lesión', f, :lesions, class: 'btn btn-success'
   hr
   .row
-    = f.button :submit
+    = f.button :submit, 'Guardar cambios', class: "btn btn-primary"
+	=link_to "Atrás", read_sequences_path,  class: "btn btn-info"

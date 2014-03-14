@@ -5,7 +5,6 @@
   	.col-md-6
 		.well
 
-    		=f.input :no_lesion, as: :decimal, label: 'Número de la lesión'
 			=f.input :size_ax, as: :decimal, label:'Tamaño en mm eje craneocaudal mayor'
     		=f.input :vertebral_level, as: :check_boxes, collection: Ldmc::Lesion::LEVEL_OPTS, item_wrapper_class: 'checkbox-inline', label: 'Nivel vertebral (epicentro de la lesión)'
     		=f.input :clarity, as: :radio_buttons, collection: Ldmc::Lesion::CLARITY_OPTS, item_wrapper_class: 'checkbox-inline', label:'Nitidez (claridad en la visualización de la lesión)'
