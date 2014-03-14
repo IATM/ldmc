@@ -1,6 +1,7 @@
 module Ldmc
   class SubjectsController < ApplicationController
     before_action :set_subject, only: [:show, :edit, :update, :destroy]
+    load_and_authorize_resource
 
     def index
       @subjects = Subject.all

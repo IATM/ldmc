@@ -2,6 +2,7 @@ module Ldmc
   class ReadSequencesController < ApplicationController
     before_action :load_subject, only: [:index, :show, :edit, :update, :new, :create, :destroy]
     before_action :set_read_sequence, only: [:show, :edit, :update, :destroy]
+    load_and_authorize_resource
 
     def all
       @read_sequences = Subject.all.map {|s| s.read_sequences}.flatten

@@ -3,6 +3,7 @@ module Ldmc
     before_action :load_subject, only: [:show, :edit, :update, :new, :create, :destroy]
     before_action :load_read_sequence, only: [:show, :edit, :update, :new, :create, :destroy]
     before_action :set_lesion, only: [:show, :edit, :update, :destroy]
+    load_and_authorize_resource
 
     def show
     end

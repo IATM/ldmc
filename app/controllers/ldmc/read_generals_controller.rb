@@ -4,6 +4,7 @@ module Ldmc
   class ReadGeneralsController < ApplicationController
     before_action :load_subject
     before_action :set_read_general, only: [:show, :edit, :update]
+    load_and_authorize_resource
 
     def show
     end
