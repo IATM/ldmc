@@ -7,10 +7,6 @@ Ldmc::Engine.routes.draw do
       resources :lesions
     end
   end
+  resources :participants
   root to: 'subjects#index'
 end
-
-
-# get 'work_orders', to: 'work_orders#all'
-#   get 'read_sequences', to: 'ldmc/read_sequences#all'
-#   get 'read_generals', to: 'ldmc/read_generals#all'

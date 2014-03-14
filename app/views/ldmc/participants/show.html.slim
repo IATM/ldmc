@@ -1,0 +1,18 @@
+.panel.panel-primary
+  .panel-heading
+    h1 = "Participant: #{@participant.user_id}"
+
+  .panel-body
+    .row
+      .col-md-12
+        dl.dl-horizontal
+          dt email
+          dd = User.find(@participant.user_id).email
+          dt user_id:
+          dd = @participant.user_id
+          dt role:
+          dd = @participant.role
+
+  .panel-footer
+    = link_to 'Edit Participant', edit_participant_path(@participant), class: "btn btn-primary"
+    = link_to 'Back', participants_path, class: "btn - btn-default"

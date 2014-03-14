@@ -4,9 +4,9 @@ module Ldmc
     before_filter :merge_abilities
     layout 'application'
 
-    rescue_from CanCan::AccessDenied do |exception|
-      redirect_to main_app.root_path, :alert => exception.message
-    end
+    # rescue_from CanCan::AccessDenied do |exception|
+    #   redirect_to main_app.root_path, :alert => exception.message
+    # end
 
     private
 
