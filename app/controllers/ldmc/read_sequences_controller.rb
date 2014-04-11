@@ -5,6 +5,7 @@ module Ldmc
 
     def all
       @read_sequences = Subject.all.map {|s| s.read_sequences}.flatten
+      @sorted_sequences= @read_sequences.sort {|a,b| a.sequence_ann.delete('S').to_i <=> b.sequence_ann.delete('S').to_i}
       
     end
 
@@ -39,7 +40,11 @@ module Ldmc
 
     def update
       respond_to do |format|
-        if @read_sequence.update_attributes(read_sequence_params)
+          @read_sequence.assign_attributes(read_sequence_params)
+          @read_sequence.updated_by=current_user.id
+        
+         if @read_sequence.save
+           
           format.html { redirect_to read_sequences_path}
           format.json { head :no_content }
         else
@@ -60,7 +65,7 @@ module Ldmc
     end
 
     def read_sequence_params
-      params.require(:read_sequence).permit(:sequence_name, :sequence_ann,
+      params.require(:read_sequence).permit(:sequence_name, :sequence_ann,:updated_by,
                                             :lesions_attributes => [:id,
                                                                     :type,
                                                                     :size_ax,

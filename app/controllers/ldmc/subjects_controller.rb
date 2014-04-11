@@ -66,7 +66,7 @@ module Ldmc
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def subject_params
-      params.require(:subject).permit(:identification, :sex, :birthdate,
+      params.require(:subject).permit(:identification, :sex, :age,
                                       :read_sequences_attributes => [:id, :sequence_name, :sequence_ann, :_destroy],
                                       :read_general_attributes => [:read_ann])
     end

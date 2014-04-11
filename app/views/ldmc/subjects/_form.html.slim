@@ -3,9 +3,9 @@
   .row
     .col-md-12
       h2 Informacion del paciente
-      = f.input :sex
+      = f.input :sex, as: :radio_buttons, collection: Ldmc::Subject::SEX_OPTS, item_wrapper_class: 'checkbox-inline', label: 'Sexo'
       = f.input :identification
-      = f.input :birthdate
+      = f.input :age
   .row
     .col-md-12
       = f.simple_fields_for :read_general do |rg|

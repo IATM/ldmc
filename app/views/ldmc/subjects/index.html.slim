@@ -15,7 +15,7 @@
             strong = link_to subject.identification, subject_path(subject)
           td = subject.sex
           td = subject.identification
-          td = subject.birthdate
+          td = subject.age
           td
             = link_to 'Show', subject, class: "btn btn-xs btn-primary"
             = link_to 'Edit', edit_subject_path(subject), class: "btn btn-warning btn-xs"

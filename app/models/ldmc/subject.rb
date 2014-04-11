@@ -6,8 +6,8 @@ module Ldmc
 
     field :type, type: String, default: 'subject'
     field :identification, type: String
-    field :sex, type: String
-    field :birthdate, type: Date
+    field :sex, type: String; SEX_OPTS = ['femenino','masculino']
+    field :age, type: Integer
 
     slug :identification
 

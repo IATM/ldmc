@@ -6,12 +6,12 @@
     .row
       .col-md-6
         dl.dl-horizontal
-          dt Sex:
+          dt Sex0:
           dd = @subject.sex
-          dt Identification:
+          dt Identificación:
           dd = @subject.identification
-          dt Birthdate:
-          dd = @subject.birthdate
+          dt Edad:
+          dd = @subject.age
       .col-md-6
         = link_to "Lectura general", subject_read_general_path(@subject, @subject.read_general) if @subject.read_general
 

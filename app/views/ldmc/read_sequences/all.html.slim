@@ -1,18 +1,19 @@
 .panel.panel-primary
-  .panel-heading
-    h1 Lecturas por secuencia
-  .panel-body
-    table.table.table-striped
-      tr
-        th Nombre
-		th
-
-      - @read_sequences.each do |read|
-        tr
-  		  	td = link_to read.sequence_ann, edit_subject_read_sequence_path(read.subject,read), class: 'btn btn-primary'
-			td
-				= link_to 'Mostrar', subject_read_sequence_path(read.subject,read), class: 'btn btn-info btn-xs'
-				= link_to 'Editar', edit_subject_read_sequence_path(read.subject,read), class: "btn btn-warning btn-xs"
-
-  .panel-footer
+	.panel-heading
+		h1 Lecturas por secuencia
+	.panel-body
+		table.table.table-striped
+			tr
+				th Nombre
+				th
+				- @sorted_sequences.each do |read|
+					tr
+					- if read.updated_by == current_user.id
+						td = link_to read.sequence_ann, edit_subject_read_sequence_path(read.subject,read), class: 'btn btn-primary', disabled: "disabled"
+					- else
+						td = link_to read.sequence_ann, edit_subject_read_sequence_path(read.subject,read), class: 'btn btn-primary'					
+					td
+						= link_to 'Mostrar', subject_read_sequence_path(read.subject,read), class: 'btn btn-info btn-xs'
+						= link_to 'Editar', edit_subject_read_sequence_path(read.subject,read), class: "btn btn-warning btn-xs"
+	.panel-footer
     

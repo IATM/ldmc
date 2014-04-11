@@ -7,6 +7,7 @@ module Ldmc
 
     def all
       @read_generals = Subject.all.map {|s| s.read_general}.flatten
+      @sorted_generals= @read_generals.sort {|a,b| a.read_ann.delete('P').to_i <=> b.read_ann.delete('P').to_i}
       
     end
     
@@ -36,8 +37,12 @@ module Ldmc
     end
 
     def update
+      
       respond_to do |format|
-        if @read_general.update_attributes(read_general_params)
+        @read_general.assign_attributes(read_general_params)
+        @read_general.updated_by=current_user.id
+        
+        if @read_general.save
           format.html { redirect_to read_generals_path}
           format.json { head :no_content }
         else
@@ -62,7 +67,9 @@ module Ldmc
                     {lesion_dir: []},
                     :level_dir,
                     :level_flair,
-                    :read_ann
+                    :read_ann,
+                    :indication,
+                    :updated_by
                     )
     end
   end
