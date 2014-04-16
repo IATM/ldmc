@@ -6,7 +6,7 @@
 			tr
 				th Accession
 				th
-			- @read_generals.each do |read|
+			- @sorted_generals.each do |read|
 				tr
 					- if read.updated_by == current_user.id
 						td = link_to read.read_ann, edit_subject_read_general_path(read.subject,read), class: 'btn btn-primary', disabled: "disabled"

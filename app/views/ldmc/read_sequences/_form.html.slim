@@ -8,6 +8,10 @@
       .links
         = link_to_add_association 'Agregar Lesión', f, :lesions, class: 'btn btn-success'
   hr
+	.row
+		=f.input :nolesion_tri, as: :boolean, label: 'No hay lesion', boolean_style: :inline
   .row
     = f.button :submit, 'Guardar cambios', class: "btn btn-primary"
 	=link_to "Atrás", read_sequences_path,  class: "btn btn-info"
+	
+	

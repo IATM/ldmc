@@ -65,7 +65,7 @@ module Ldmc
     end
 
     def read_sequence_params
-      params.require(:read_sequence).permit(:sequence_name, :sequence_ann,:updated_by,
+      params.require(:read_sequence).permit(:sequence_name, :sequence_ann,:updated_by,:nolesion_tri,
                                             :lesions_attributes => [:id,
                                                                     :type,
                                                                     :size_ax,
