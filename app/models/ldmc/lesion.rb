@@ -12,6 +12,7 @@ module Ldmc
     field :intensity_lesion, type: Float
     field :intensity_normalspine, type: Float
     field :intensity_nape, type: Float
+    field :created_by
 
     embedded_in :read_sequence
     

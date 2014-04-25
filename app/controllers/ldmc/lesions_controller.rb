@@ -72,7 +72,8 @@ module Ldmc
                     {spine_localization: []},
                     :intensity_lesion,
                     :intensity_normalspine,
-                    :intensity_nape
+                    :intensity_nape,
+                    :created_by
                     )
     end
   end

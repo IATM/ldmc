@@ -1,9 +1,10 @@
 .nested-fields
   .panel.panel-default
     .panel-heading
-      .row 
-	  	h4 Lesion
-	  	span.pull-right = link_to_remove_association "Eliminar Lesion", f, class: 'btn btn-danger btn-xs'
+      .row
+				.col-md-12
+	  		 		h4 Lesion
+	  				span.pull-right = link_to_remove_association "Eliminar Lesion", f, class: 'btn btn-danger btn-xs'
     .panel-body
       .row
         .col-md-6
@@ -21,5 +22,6 @@
             =f.input :intensity_lesion, as: :decimal, label: 'La lesión'
             =f.input :intensity_normalspine, as: :decimal, label: 'Médula normal'
             =f.input :intensity_nape, as: :decimal, label: 'Aire posterior a la nuca'
+            =f.hidden_field :created_by, value: @user
       .row
         col-md-12

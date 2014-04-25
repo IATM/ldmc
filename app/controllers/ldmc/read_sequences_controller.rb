@@ -1,16 +1,23 @@
 module Ldmc
   class ReadSequencesController < ApplicationController
+    skip_authorization_check
+  
     before_action :load_subject, only: [:index, :show, :edit, :update, :new, :create, :destroy]
     before_action :set_read_sequence, only: [:show, :edit, :update, :destroy]
 
     def all
-      @read_sequences = Subject.all.map {|s| s.read_sequences}.flatten
+      if current_user.id.to_s=="5345b8dd6d61634023000000"
+        @read_sequences = Subject.all.map {|s| s.read_sequences.all(rad:"1")}.flatten
+      else
+         @read_sequences = Subject.all.map {|s| s.read_sequences.all(rad:"2")}.flatten
+      end
+      
       @sorted_sequences= @read_sequences.sort {|a,b| a.sequence_ann.delete('S').to_i <=> b.sequence_ann.delete('S').to_i}
       
     end
 
     def index
-      @read_sequences = @subject .read_sequences.all
+      @read_sequences = @subject.read_sequences.all
     end
 
     def show
@@ -18,6 +25,7 @@ module Ldmc
     end
 
     def edit
+      @user=current_user.id
     end
 
     def new
@@ -39,9 +47,13 @@ module Ldmc
     end
 
     def update
+    
       respond_to do |format|
           @read_sequence.assign_attributes(read_sequence_params)
           @read_sequence.updated_by=current_user.id
+          if @read_sequence.lesions.present?
+            @read_sequence.nolesion_tri=false
+          end
         
          if @read_sequence.save
            
@@ -65,7 +77,7 @@ module Ldmc
     end
 
     def read_sequence_params
-      params.require(:read_sequence).permit(:sequence_name, :sequence_ann,:updated_by,:nolesion_tri,
+      params.require(:read_sequence).permit(:sequence_name, :sequence_ann,:nolesion_tri,:rad,:updated_by,
                                             :lesions_attributes => [:id,
                                                                     :type,
                                                                     :size_ax,
@@ -75,7 +87,8 @@ module Ldmc
                                                                     :intensity_lesion,
                                                                     :intensity_normalspine,
                                                                     :intensity_nape,
-                                                                    :_destroy])
+                                                                    :_destroy,
+                                                                    :created_by])
     end
   end
 end

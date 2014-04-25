@@ -1,5 +1,6 @@
 module Ldmc
   class SubjectsController < ApplicationController
+    skip_authorization_check
     before_action :set_subject, only: [:show, :edit, :update, :destroy]
 
     def index
@@ -12,11 +13,11 @@ module Ldmc
     def new
       @subject = Subject.new
 
-      @subject.read_sequences.build(sequence_name: '3D FLAIR')
       @subject.read_sequences.build(sequence_name: '3D DIR')
-      @subject.read_sequences.build(sequence_name: '2D T1 FLAIR')
-      @subject.read_sequences.build(sequence_name: '2D DP')
-      @subject.read_sequences.build(sequence_name: '2D STIR')
+      @subject.read_sequences.build(sequence_name: '3D FLAIR')
+      @subject.read_sequences.build(sequence_name: 'DP SAG')
+      @subject.read_sequences.build(sequence_name: 'ST SAG')
+      @subject.read_sequences.build(sequence_name: '2D FLAIR')
 
       @subject.build_read_general
     end
@@ -67,7 +68,7 @@ module Ldmc
     # Never trust parameters from the scary internet, only allow the white list through.
     def subject_params
       params.require(:subject).permit(:identification, :sex, :age,
-                                      :read_sequences_attributes => [:id, :sequence_name, :sequence_ann, :_destroy],
+                                      :read_sequences_attributes => [:id, :sequence_name, :sequence_ann, :_destroy, :rad],
                                       :read_general_attributes => [:read_ann])
     end
   end
